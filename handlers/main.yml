@@ -1,7 +1,3 @@
 ---
-
 - name: restart keepalived
   service: name=keepalived state=restarted
-
-- name: restart network
-  service: name=network state=restart

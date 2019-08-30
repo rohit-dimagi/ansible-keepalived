@@ -1,0 +1,25 @@
+#!/usr/bin/python
+import smtplib 
+import socket
+import sys
+
+hostname = socket.gethostbyaddr(socket.gethostname())[0].split('.')[0]
+state= sys.arg[1]
+
+# creates SMTP session 
+s = smtplib.SMTP('{{ smtp_server }}', 587) 
+  
+# start TLS for security 
+s.starttls() 
+  
+# Authentication 
+s.login("{{ sender_email }}", "{{ sender_password }}") 
+  
+# message to be sent 
+message = "{0} entered in {1} state".format(hostname,state)
+  
+# sending the mail 
+s.sendmail("{{ sender_email }}", "{{ recepient_email }}", message) 
+  
+# terminating the session 
+s.quit() 

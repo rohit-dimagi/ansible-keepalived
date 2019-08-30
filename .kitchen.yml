@@ -1,0 +1,17 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: ansible_playbook
+  hosts: test-kitchen 
+  ansible_version: latest
+  ansible_verbose: true
+  ansible_verbosity: 2
+  require_chef_for_busser: false
+  require_ruby_for_busser: false
+platforms:
+  - name: ubuntu-18.04
+
+suites:
+  - name: default
